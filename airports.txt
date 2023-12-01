@@ -1,0 +1,3 @@
+Haneda;HND;apan
+Changi;SIN;Singapore
+Ben Gurion-2;TLV;Israel

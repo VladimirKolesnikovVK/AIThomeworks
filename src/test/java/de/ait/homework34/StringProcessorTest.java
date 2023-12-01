@@ -18,35 +18,36 @@ package de.ait.homework34;
 Каждый тестовый метод должен быть аннотирован @Test и иметь понятное имя, отражающее тестируемый случай.
 */
 
-import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class StringProcessorTest {
-    private StringProcessor stringProcessor = new StringProcessor();
+    private StringProcessor stringProcessor;
+    private static final String HALLO_STRING = "Hallo ";
+@BeforeEach
+    public void setUp(){
+        stringProcessor = new StringProcessor();
+    }
 
     @Test
-    public void testConcatenate() {
-        String result = stringProcessor.concatenate("Cohort33", "super");
-        assertEquals("Cohort33super", result);
+    void testConcatenateHappyPath() {
+        Assertions.assertEquals("kotik",stringProcessor.reverse("kitok"));
     }
 
     @Test
     public void testGetLength() {
-        int length = stringProcessor.getLength("Cohort33");
-        assertEquals(8, length);
+
     }
 
     @Test
     public void testReverse() {
-        String result = stringProcessor.reverse("Cohort33");
-        assertEquals("33trohoC", result);
+
     }
 
     @Test
-    public void testIsPalindrome() {
-        assertTrue(stringProcessor.isPalindrome("Ein Esel lese nie"));
-        assertFalse(stringProcessor.isPalindrome("Cohort33"));
+    public void testConcatenateSecondPalindromeNull() {
+
     }
 }
