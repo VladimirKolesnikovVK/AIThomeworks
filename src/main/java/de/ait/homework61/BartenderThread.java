@@ -8,12 +8,12 @@ public class BartenderThread extends Thread{
 
     @Override
     public void run(){
-        System.out.println("Готовлю напиток");
         try {
+        LOGGER.info("Готовлю напиток");
             Thread.sleep(3000);
+            LOGGER.info("Напиток готов");
         }catch (InterruptedException exception){
-            LOGGER.info("exception: " + exception);
+            LOGGER.error("error! - ошибка" + exception);
         }
-        System.out.println("Напиток готов");
     }
 }

@@ -15,9 +15,11 @@ public class LambdaToWork {
 
         //Преобразование элементов списка
         List<Integer> intNumbers = Arrays.asList(2,3,4,55);
-        intNumbers.replaceAll(element-> element*element);
+        List<Integer> result=  intNumbers.stream().map(nuber -> nuber*nuber).toList();
+        result.forEach(System.out::println);
+        /*intNumbers.replaceAll(element-> element*element);
         List<Integer> squareNumbers = intNumbers;
-        System.out.println(squareNumbers);
+        System.out.println(squareNumbers);*/
 
         System.out.println("-------------------------");
 

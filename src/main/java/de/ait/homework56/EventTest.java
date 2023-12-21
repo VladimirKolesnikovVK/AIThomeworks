@@ -1,27 +1,34 @@
 package de.ait.homework56;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class EventTest {
+    private static EventScheduler eventScheduler = new EventScheduler();
     public static void main(String[] args) {
-        Event event1 = new Event("Meeting", LocalDateTime.of(2023, 1, 1, 10, 0), LocalDateTime.of(2023, 1, 1, 12, 0));
-        Event event2 = new Event("Conference", LocalDateTime.of(2023, 1, 1, 11, 0), LocalDateTime.of(2023, 1, 1, 14, 0));
-        Event event3 = new Event("Party", LocalDateTime.of(2023, 1, 2, 20, 0), LocalDateTime.of(2023, 1, 3, 1, 0));
+        LocalDateTime eventFilmTerminatorStart = LocalDateTime.of(2023,12,5,2,30);
+        LocalDateTime eventFilmTerminatorEnd = LocalDateTime.of(2023,12,5,4,00);
+        Event eventFilmTerminator = new Event("Film Terminator",eventFilmTerminatorStart, eventFilmTerminatorEnd);
 
-        EventScheduler scheduler = new EventScheduler();
-        scheduler.addEvent(event1);
-        scheduler.addEvent(event2);
-        scheduler.addEvent(event3);
+        eventScheduler.addEvent(eventFilmTerminator);
 
-        List<Event> allEvents = scheduler.getAllEvents();
-        System.out.println("All Events: " + allEvents);
+        List<Event> allEvents = eventScheduler.getAllEvents();
+        for (Event event: allEvents){
+            System.out.println(event.toString());
+        }
 
-        LocalDateTime specificDate = LocalDateTime.of(2023, 1, 1, 0, 0);
-        List<Event> eventsOnDate = scheduler.getEventsOnDate(specificDate);
-        System.out.println("Events on " + specificDate.toLocalDate() + ": " + eventsOnDate);
+        LocalDate localDate = LocalDate.of(2023,12,5);
+        List<Event> result = eventScheduler.getEventsOfDateTwo(localDate);
+        for (Event event: result){
+            System.out.println(event.toString());
+        }
 
-        boolean overlap = scheduler.areEventsOverlapping(event1, event2);
-        System.out.println("Do events overlap? " + overlap);
+        boolean checkOverlape = eventScheduler.checkEventToOverlape(eventFilmTerminator,eventFilmTerminator);
+        System.out.println(checkOverlape);
+
+        eventScheduler.deleteEvent(eventFilmTerminator);
+        List<Event> resultAfterDelete = eventScheduler.getAllEvents();
+        System.out.println(resultAfterDelete);
     }
 }

@@ -40,4 +40,14 @@ public class Student {
     public double getAverageGrade() {
         return averageGrade;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", age=" + age +
+                ", averageGrade=" + averageGrade +
+                '}';
+    }
 }

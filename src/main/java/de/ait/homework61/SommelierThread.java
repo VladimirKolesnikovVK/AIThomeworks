@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 
 public class SommelierThread extends Thread{
     private static final Logger LOGGER = LoggerFactory.getLogger(SommelierThread.class);
-
     private String wineName;
 
     public SommelierThread(String wineName) {
@@ -18,12 +17,13 @@ public class SommelierThread extends Thread{
 
     @Override
     public void run(){
-        System.out.println("Выбираю вино");
         try {
+        LOGGER.info("Выбираю вино");
             Thread.sleep(2000);
+            LOGGER.info("Вино выбрано: " + getWineName());
         }catch (InterruptedException exception){
             LOGGER.error("exception" + exception);
         }
-        System.out.println("Вино выбрано: " + getWineName());
+
     }
 }

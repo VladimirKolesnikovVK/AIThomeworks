@@ -18,12 +18,13 @@ public class TeaMasterThread extends Thread{
 
     @Override
     public void run(){
-        System.out.println( "Завариваю чай: " + getTeeType());
         try {
+        LOGGER.info( "Завариваю чай: " + getTeeType());
             Thread.sleep(4000);
+            LOGGER.info("Чай готов");
         }catch (InterruptedException exception){
             LOGGER.error("exception: " + exception);
         }
-        System.out.println("Чай готов");
+
     }
 }

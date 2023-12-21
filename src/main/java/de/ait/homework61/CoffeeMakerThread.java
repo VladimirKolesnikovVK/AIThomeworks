@@ -8,18 +8,14 @@ public class CoffeeMakerThread extends Thread{
 
     @Override
     public void run(){
-        System.out.println("Кофе мелется");
         try {
+        LOGGER.info("Кофе мелется");
             Thread.sleep(2500);
+            LOGGER.info("Кофе заваривается");
+            Thread.sleep(5000);
+            LOGGER.info("Кофе готов");
         }catch (InterruptedException exception){
             LOGGER.error("exception: " + exception);
         }
-        System.out.println("Кофе заваривается");
-        try {
-            Thread.sleep(1000);
-        }catch (InterruptedException exception){
-            LOGGER.error("exception: " + exception);
-        }
-        System.out.println("Кофе готов");
     }
 }

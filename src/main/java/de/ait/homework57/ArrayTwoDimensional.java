@@ -31,8 +31,8 @@ public class ArrayTwoDimensional {
             // Вывод чисел, больших среднего значения
             System.out.println("Числа больше среднего значения:");
             printNumbersAboveAverage(array, averageValue);
-        } catch (Exception e) {
-            System.out.println("Произошла ошибка: " + e.getMessage());
+        } catch (Exception exception) {
+            System.out.println("Произошла ошибка: " + exception.getMessage());
         }
     }
 

@@ -1,40 +1,54 @@
 package de.ait.homework56;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;
-import java.time.LocalDateTime;
 
 public class EventScheduler {
-    private List<Event> events;
+    private List<Event> eventList;
 
     public EventScheduler() {
-        this.events = new ArrayList<>();
+        this.eventList = new ArrayList<>();
     }
 
-    public void addEvent(Event event) {
-        events.add(event);
+    public void addEvent(Event eventToAdd) {
+        eventList.add(eventToAdd);
     }
 
-    public void removeEvent(Event event) {
-        events.remove(event);
+    public void deleteEvent(Event eventToDelete) {
+        eventList.remove(eventToDelete);
     }
 
     public List<Event> getAllEvents() {
-        return events;
+        return eventList;
     }
 
-    public List<Event> getEventsOnDate(LocalDateTime date) {
-        List<Event> eventsOnDate = new ArrayList<>();
-        for (Event event : events) {
-            if (event.getStartDateTime().toLocalDate().equals(date.toLocalDate())) {
-                eventsOnDate.add(event);
+    public List<Event> getEventsOfDate(LocalDate localDate) {
+        List<Event> fundEvents = new ArrayList<>();
+        for (Event event: eventList){
+            if (event.getStartDateTime().toLocalDate().equals(localDate)){
+                fundEvents.add(event);
             }
         }
-        return eventsOnDate;
+        return fundEvents;
     }
 
-    public boolean areEventsOverlapping(Event event1, Event event2) {
-        return !(event1.getEndDateTime().isBefore(event2.getStartDateTime()) ||
-                event2.getEndDateTime().isBefore(event1.getStartDateTime()));
+    public List<Event> getEventsOfDateTwo(LocalDate localDate) {
+        List<Event> fundEvents = new ArrayList<>();
+        for (Event event : eventList) {
+            //if (event.getStartDateTime().getDayOfYear()...)
+            if (event.getStartDateTime().getDayOfMonth() == localDate.getDayOfMonth() &&
+                    event.getStartDateTime().getMonth() == localDate.getMonth() &&
+                    event.getStartDateTime().getYear() == localDate.getYear()) {
+                fundEvents.add(event);
+            }
+        }
+        return fundEvents;
+    }
+
+    public boolean checkEventToOverlape(Event eventOne, Event eventTwo){
+        return eventOne.getStartDateTime().isBefore(eventTwo.getEndDateTime()) &&
+                eventTwo.getStartDateTime().isBefore(eventOne.getEndDateTime());
+
     }
 }

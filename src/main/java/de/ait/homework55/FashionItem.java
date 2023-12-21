@@ -1,14 +1,12 @@
 package de.ait.homework55;
 
-import java.util.Set;
-
 public class FashionItem {
     private String name;
     private double price;
     private FashionCategory fashionCategory;
-    private Set<Season> seasons;
+    private Season seasons;
 
-    public FashionItem(String name, double price, FashionCategory fashionCategory, Set<Season> seasons) {
+    public FashionItem(String name, double price, FashionCategory fashionCategory, Season seasons) {
         this.name = name;
         this.price = price;
         this.fashionCategory = fashionCategory;
@@ -39,15 +37,20 @@ public class FashionItem {
         this.fashionCategory = fashionCategory;
     }
 
-    public Set<Season> getSeasons() {
+    public Season getSeasons() {
         return seasons;
     }
 
-    public void setSeasons(Set<Season> seasons) {
+    public void setSeasons(Season seasons) {
         this.seasons = seasons;
     }
 
-    public FashionCategory getCategory() {
-        return fashionCategory;
+    @Override
+    public String toString() {
+        return "название-'" + name +
+                ", цена-" + price +
+                ", категория-" + fashionCategory +
+                ", сезон-" + seasons;
     }
 }
+

@@ -12,8 +12,8 @@ public class MyTask implements Runnable{
             try {
                 Thread.sleep(500);
             }catch (InterruptedException exception){
-                exception.printStackTrace();
-                LOGGER.error("exception" + exception);
+                System.out.println("exception" + exception);
+                LOGGER.error("exception {}", exception);
             }
         }
     }
